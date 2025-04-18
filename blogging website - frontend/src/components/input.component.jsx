@@ -15,7 +15,7 @@ const InputBox = ({ name, type, id, value, placeholder, icon }) => {
                 className="input-box"
             />
 
-            <i className={"fi " + icon + "input-icon"}></i>
+            <i className={"fi " + icon + " input-icon"}></i>
 
             {
                 type  == "password" ? 
