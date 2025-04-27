@@ -1,3 +1,5 @@
+import HomePage from "./pages/home.page";
+import Editor from "./pages/editor.pages"
 import Navbar from "./components/navbar.component";
 import { Routes, Route } from "react-router-dom";
 import UserAuthForm from "./pages/userAuthForm.page";
@@ -21,7 +23,9 @@ const App = () => {
         //setting up routes
         <UserContext.Provider value={{userAuth, setUserAuth}}>
             <Routes>
-                <Route path="/" element={<Navbar />}>
+                <Route path="/editor" element={<Editor />} />
+                <Route path="/" element={<Navbar />} >
+                    <Route index element={<HomePage />} />
                     <Route path="signin" element={<UserAuthForm type="sign-in" />} />
                     <Route path="signup" element={<UserAuthForm type="sign-up" />} />
                 </Route>
