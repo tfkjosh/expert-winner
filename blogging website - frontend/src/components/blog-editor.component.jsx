@@ -19,7 +19,7 @@ const BlogEditor = () => {
     useEffect(() => {
         setTextEditor(new EditorJS({
             holderId: "textEditor",
-            data: '',
+            data: content,
             tools: tools, 
             placeHolder: ""
         }))
@@ -85,7 +85,12 @@ const BlogEditor = () => {
                 if(data.blocks.length){
                     setBlog({ ...blog, content: data });
                     setEditorState("publish")
+                } else {
+                    return toast.error("Write something in your blog to publish it")
                 }
+            })
+            .catch((err) => {
+                console.log(err);
             })
         }
     }
@@ -133,10 +138,11 @@ const BlogEditor = () => {
                         </div>
 
                         <textarea
-                        placeholder="Blog Title"
-                        className="text-4xl font-medium w-full h-20 outline-none resize-none mt-10 leading-tight placeholder:placeholder-opacity-40"
-                        onKeyDown={handleTitleKeyDown}
-                        onChange={handleTitleChange}
+                            defaultValue={title}
+                            placeholder="Blog Title"
+                            className="text-4xl font-medium w-full h-20 outline-none resize-none mt-10 leading-tight placeholder:placeholder-opacity-40"
+                            onKeyDown={handleTitleKeyDown}
+                            onChange={handleTitleChange}
                         >
                         </textarea>
                         
